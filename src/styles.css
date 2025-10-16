@@ -1,6 +1,21 @@
+:root {
+  /* 🌿 Primary Brand Colors */
+          /* Leaf Green */
+  --color-primary-rgba: rgba(129, 199, 132, 1);
+
+      /* Moss Green */
+  --color-secondary-rgba: rgba(85, 139, 47, 1);
+
+      /* Soft Sunlight Yellow */
+  --color-accent-rgba: rgba(255, 235, 59, 1);
+
+  /* 🌱 Background and Text */
+    /* Pale Sage / Mint Mist */
+  --color-background-rgba: rgba(241, 248, 233, 1);}
+
 body {
 font-family: "Poppins";
-background-color:rgb(237,228,219);
+background-color:var(--color-primary-rgba);
 
 }
 
@@ -20,8 +35,11 @@ grid-gap:64px ;
 .img-responsive {
 width: 100%; 
 display: block;
+border-radius: 100%;
 
 }
+
+
 
 
 
@@ -62,10 +80,12 @@ padding: 100px ;
 text-align: center;
 }
 
-section.secondary {background-color: #f8f8f8;}
+
+
+section.secondary {background-color: var(--color-background-rgba)}
 
 header { 
-background-color:rgb(196,155,138);
+background-color:var(--color-primary-rgba);
 background-repeat: no-repeat;
 background-size: cover;
 
@@ -107,7 +127,7 @@ letter-spacing: 3px;
 text-transform: uppercase;
 background-color: white;
 text-decoration: none;
-color: #272044;
+color:var(--color-accent-rgba);
 display: inline-block;
 margin-top: 32px;
 padding: 16px 32px; }
@@ -125,15 +145,16 @@ font-size: 16px;
 line-height: 1.5;
 margin: 0;
 color: #272044;
-opacity: 0.3;
+opacity: 0.9;
 text-transform: uppercase;
+padding: 20px;
 }
 
 main h3 {
 font-weight: 700;
 font-size: 40px;
 line-height: 1.5;
-color: #272044;
+color: var(--color-secondary-rgba);
 margin: 0;
 }
 
@@ -142,7 +163,7 @@ main h4 {
     font-weight: 700;
     font-size: 24px;
     line-height: 1;
-    color: #272044;
+    color:var(--color-accent-rgba);
     margin: 0;
 }
 
@@ -151,7 +172,7 @@ main h5 {
     font-size: 13px;
     margin: 0;
     line-height: 1;
-    color: #272044;
+    color:var(--color-accent-rgba);
 }
 main p {
 font-style: normal;
@@ -162,9 +183,22 @@ color: #272044;
 opacity: 0.7;
 }
 
+li{
+    padding-top: 30px;
+    list-style: none;
+    line-height: 1.5;
+}
+
+.icon{
+    color: var(--color-secondary-rgba)
+;font-size: 30px;
+padding-bottom: 20px;
+
+}
+
 footer{
 color: white;
-background-color:rgb(196,155,138);
+background-color: var(--color-primary-rgba);
  background-repeat: no-repeat;
 background-size: cover;
 }
@@ -185,17 +219,20 @@ opacity: 0.9;
 
 footer ul{
 padding: 0;
+line-height:;
 }
 
 footer li {
 list-style: none;
 margin: 0;
-padding: 0;
+padding: 5px;
+
 }
 
 footer a{
 color: white;
-opacity: 0.7;
+
+text-decoration: none;
 }
 
 @media (max-width: 960px)
