@@ -3,86 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>English Explorers | Holistic Outdoor Learning</title>
+  <title>English Explorers | Learn Together</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/css/aos.css" rel="stylesheet">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/styles.css">
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fa-solid fa-leaf"></i> English Explorers
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="#">ABOUT</a></li>
-      <li><a href="#">CLASSES</a></li>
-      <li><a href="#">GALLERY</a></li>
-      <li><a href="#">CONTACT</a></li>
-    </ul>
-    <a href="#" class="btn-appointment">APPOINTMENT</a>
-  </nav>
+<nav class="navbar">
+  <div class="logo-container">
+    <img src="./images/english explorers-white.png" alt="Logo" class="nav-logo">
+    <span class="logo-text">English Explorers</span>
+  </div>
+
+  <input type="checkbox" id="check">
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+
+  <ul class="nav-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="#">ABOUT</a></li>
+    <li><a href="#">CLASSES</a></li>
+    <li><a href="#">GALLERY</a></li>
+    
+   
+  </ul>
+  
+  <a href="#" class="btn-appointment desktop-only">CONTACT</a>
+</nav>
 
   <header class="hero">
     <div class="hero-overlay" data-aos="zoom-in">
-      <h3>.LEARN.GROW.EXPLORE.</h3>
-      <h1>English Adventures in the Hills</h1>
-      <p>A holistic approach to language learning. We combine nature, movement, and native English instruction to help your child thrive.</p>
+      <img src="./images/english explorers (1).png" alt="Logo" class="hero-brand-icon">
+      
+      <h1>The world is your classroom</h1>
+     
       <div class="hero-buttons">
-        <a href="#" class="btn-main">ENROLL NOW</a>
-        <a href="#" class="btn-outline">LEARN MORE</a>
+        <a href="#" class="btn-enroll">ENROLL NOW</a>
+      
       </div>
     </div>
   </header>
 
   <main class="features-section">
-    <div class="features-grid">
-      <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="icon-box bg-emerald"><i class="fa-solid fa-tree"></i></div>
-        <h3>Nature First</h3>
-        <p>Holistic learning in the fresh air of Albinyana.</p>
-      </div>
+   <section class="features-grid">
+  <div class="feature-card">
+    <i class="fas fa-globe-americas"></i> 
+    <h3>Native Immersion</h3>
+    <p>100% English language immersion from a native speaker. We cater to all ages, from early years to adult learners.</p>
+  </div>
 
-      <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
-        <div class="icon-box bg-forest"><i class="fa-solid fa-compass"></i></div>
-        <h3>Skill Building</h3>
-        <p>Developing confidence through outdoor exploration.</p>
-      </div>
+  <div class="feature-card">
+    <i class="fas fa-tree"></i> 
+    <h3>Nature & Indoors</h3>
+    <p>Flexible learning environments. We utilize both indoor spaces and the great outdoors to inspire real-world conversation.</p>
+  </div>
 
-      <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-        <div class="icon-box bg-sun"><i class="fa-solid fa-sun"></i></div>
-        <h3>Bright Future</h3>
-        <p>Positive reinforcement in every English lesson.</p>
-      </div>
+  <div class="feature-card">
+    <i class="fas fa-seedling"></i> 
+    <h3>Tailored for You</h3>
+    <p>Practical, personalized classes. Choose between focused 1-to-1 sessions or social group classes available on request.</p>
+  </div>
 
-      <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
-        <div class="icon-box bg-carrot"><i class="fa-solid fa-fire-flame-curved"></i></div>
-        <h3>Pure Energy</h3>
-        <p>Physical activities that make language stick.</p>
+  <div class="feature-card">
+    <i class="fas fa-hands-helping"></i> 
+    <h3>Patient & Friendly</h3>
+    <p>A supportive atmosphere where every student feels heard. Experience a patient teaching style that prioritizes your confidence.</p>
+  </div>
+</section>
+<section class="story-section">
+  <div class="story-container">
+    <div class="story-leaf"><i class="fas fa-leaf"></i></div>
+    
+    <div class="story-content">
+      <span class="story-badge">Our Story</span>
+      <h2>From the UK to the Heart of Albinyana</h2>
+      
+      <div class="story-text">
+        <p>
+          Originally from the UK, I moved to this beautiful village five years ago. Having taught English in traditional schools, online, and at home, I realized something vital: <strong>learning is about doing.</strong>
+        </p>
+        <p>
+          Surrounded by the stunning landscape of Albinyana, I created <strong>English Explorers</strong> as a space where students can step away from the desk. We focus on the practical application of English through activities, games, and nature—allowing students to take what they learn at home or school and put those skills into practice in the real world.
+        </p>
       </div>
     </div>
+  </div>
+</section>
   </main>
 
   <footer>
-    <div class="footer-content">
-      <h2>Join the Adventure</h2>
-      <div class="social-icons">
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-      </div>
-      <p>&copy; 2026 English Explorers</p>
+    
+    <img src="./images/english explorers-white.png" alt="Footer Logo" class="footer-logo">
+    <div class="footer-socials">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-solid fa-envelope"></i></a>
+      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
+    <p>&copy; 2026 English Explorers | Albinyana, Spain</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/js/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-  </script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
 </body>
 </html>
