@@ -1,265 +1,217 @@
+/* ---------- BRAND COLOR PALETTE ---------- */
 :root {
-  /* 🌿 Primary Brand Colors */
-          /* Leaf Green */
-  --color-primary-rgba: rgba(129, 199, 132, 1);
+  --emerald: #2ECC71;
+  --forest: #27AE60;
+  --sunflower: #F1C40F;
+  --carrot: #E67E22;
+  --asphalt: #34495E;
+  --white: #ffffff;
+  --light-bg: #f9fbfb;
+}
 
-      /* Moss Green */
-  --color-secondary-rgba: rgba(85, 139, 47, 1);
-
-      /* Soft Sunlight Yellow */
-  --color-accent-rgba: rgba(255, 235, 59, 1);
-
-  /* 🌱 Background and Text */
-    /* Pale Sage / Mint Mist */
-  --color-background-rgba: rgba(241, 248, 233, 1);}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
 
 body {
-font-family: "Poppins";
-background-color:var(--color-primary-rgba);
-
+  color: var(--asphalt);
+  line-height: 1.6;
+  background-color: var(--white);
+  overflow-x: hidden;
 }
 
-
-.container { 
-max-width: 1400px;
-margin: 0 auto;
+/* ---------- NAVIGATION ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
 }
 
-.text-center {text-align: center;}
-
-.grid{ 
-display: grid;
-grid-gap:64px ;
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.img-responsive {
-width: 100%; 
-display: block;
-border-radius: 100%;
-
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
 }
 
-
-
-
-
-.grid-3-columns {
-    grid-template-columns: 1fr 1fr 1fr;
+.nav-links a {
+  text-decoration: none;
+  color: var(--asphalt);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;
 }
 
-.grid-3-columns-with-first-narrow{
- grid-template-columns: 1fr 2fr 2fr;
-
+.nav-links a:hover {
+  color: var(--forest);
 }
 
-
-
-
-.card { 
-    background-color: white;
-    margin: 30px 0;
-
+.btn-appointment {
+  background: var(--carrot);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: 0.3s;
 }
 
-.card-header.grid {
- grid-gap: 0;
-}
-.card-body {
-    padding: 30px;
+.btn-appointment:hover {
+  background: #d35400;
+  transform: scale(1.05);
 }
 
-.card-footer {
-    padding: 0 20px 20px;
+/* ---------- HERO SECTION ---------- */
+.hero {
+  height: 80vh;
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+              url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2040'); 
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-
-section {
-max-width: 100%;
-margin: 0 auto;
-padding: 100px ;
-text-align: center;
+.hero-overlay {
+  background: rgba(52, 73, 94, 0.92);
+  padding: 60px 40px;
+  border-radius: 30px;
+  max-width: 800px;
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border-top: 8px solid var(--sunflower);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
 }
 
-
-
-section.secondary {background-color: var(--color-background-rgba)}
-
-header { 
-background-color:var(--color-primary-rgba);
-background-repeat: no-repeat;
-background-size: cover;
-
-
-color: white;
-text-align: center;
-padding: 200px 0;
-
+.hero-overlay h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  margin-bottom: 20px;
 }
 
-header h1 {
-font-weight: 700;
-font-size: 96px;
-line-height: 1; 
-margin: 30px 0;
-
+.btn-enroll {
+  background: var(--carrot);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  margin: 10px;
+  transition: 0.3s;
 }
 
-header h2 { font-weight: 400;
-font-size: 40px;
-line-height: 1.5;
-margin: 0;
+.btn-learn {
+  border: 2px solid var(--white);
+  color: var(--white);
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  margin: 10px;
+  transition: 0.3s;
 }
 
-header h3 { font-weight: 900;
-font-size: 24px;
-line-height: 1.5;
-letter-spacing: 5px;
-margin: 0;
+/* ---------- DYNAMIC FEATURES SECTION ---------- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 100px 10%;
+  background-color: var(--light-bg);
+  text-align: center;
 }
 
-
-header a {
-font-weight: 700;
-font-size: 14px;
-line-height: 1.5;
-text-align: center;
-letter-spacing: 3px;
-text-transform: uppercase;
-background-color: white;
-text-decoration: none;
-color:var(--color-accent-rgba);
-display: inline-block;
-margin-top: 32px;
-padding: 16px 32px; }
-
-
-
-
-main { 
-background-color: white;
+.feature-item {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  /* The "Secret Sauce" for the bounce */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  cursor: pointer;
 }
 
-main h2 {
-font-weight: 700;
-font-size: 16px;
-line-height: 1.5;
-margin: 0;
-color: #272044;
-opacity: 0.9;
-text-transform: uppercase;
-padding: 20px;
+/* Card lifts and shadow deepens on hover */
+.feature-item:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-main h3 {
-font-weight: 700;
-font-size: 40px;
-line-height: 1.5;
-color: var(--color-secondary-rgba);
-margin: 0;
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 2.2rem;
+  color: white;
+  /* Smooth transition for the icon itself */
+  transition: all 0.4s ease;
 }
 
-
-main h4 {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 1;
-    color:var(--color-accent-rgba);
-    margin: 0;
+/* Icon circle expands and spins slightly */
+.feature-item:hover .icon-circle {
+  transform: scale(1.15) rotate(12deg);
 }
 
-main h5 {
-    font-weight: 700;
-    font-size: 13px;
-    margin: 0;
-    line-height: 1;
-    color:var(--color-accent-rgba);
-}
-main p {
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 1.5;
-color: #272044;
-opacity: 0.7;
+/* The actual font-awesome icon jumps slightly inside the circle */
+.feature-item:hover i {
+  animation: iconBounce 0.5s ease;
 }
 
-li{
-    padding-top: 30px;
-    list-style: none;
-    line-height: 1.5;
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
-.icon{
-    color: var(--color-secondary-rgba)
-;font-size: 30px;
-padding-bottom: 20px;
+/* Colors for circles */
+.bg-1 { background: var(--emerald); }
+.bg-2 { background: var(--forest); }
+.bg-3 { background: var(--sunflower); }
+.bg-4 { background: var(--carrot); }
 
+/* ---------- FOOTER ---------- */
+footer {
+  background: var(--asphalt);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 10px solid var(--forest);
 }
 
-footer{
-color: white;
-background-color: var(--color-primary-rgba);
- background-repeat: no-repeat;
-background-size: cover;
+.social-links a {
+  color: var(--sunflower);
+  font-size: 1.8rem;
+  margin: 0 10px;
+  transition: 0.3s;
+  display: inline-block;
 }
 
-footer h3{ 
-font-weight: 700;
-font-size: 20px;
-line-height: 30px;
+.social-links a:hover {
+  transform: scale(1.2);
+  color: var(--emerald);
 }
-
-footer p {
-font-weight: 400;
-font-size: 16px;
-
-line-height: 24px;
-opacity: 0.9;
-}
-
-footer ul{
-padding: 0;
-line-height:;
-}
-
-footer li {
-list-style: none;
-margin: 0;
-padding: 5px;
-
-}
-
-footer a{
-color: white;
-
-text-decoration: none;
-}
-
-@media (max-width: 960px)
-{
-    header {
-        padding: 60px 0 ;
-    }
-    header h1 { 
-        font-size: 48px;
-    }
-    header h2 { 
-        font-size: 20px;
-    }
-    header h3 { 
-        font-size: 12px;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-        grid-gap: 32px;
-
-    }
-
-    section {
-        padding: 30px ;
-    }
-
-    .card-header img {
-        display: none;
-    }}
