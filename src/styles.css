@@ -1,113 +1,131 @@
-/* ---------- 1. EXTERNAL FONT IMPORT ---------- */
-/* Using Cabin Sketch for that hand-drawn logo feel and Poppins for readability */
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
-
-/* ---------- 2. LOGO-BASED PALETTE ---------- */
+/* ==========================================
+   1. VARIABLES & GENERAL
+   ========================================== */
 :root {
-  --logo-sage: #81C784;    /* Your exact Logo Green */
-  --logo-sun: #FCE34E;     /* Your exact Logo Yellow */
-  --asphalt: #34495E;      /* Dark slate for high-contrast text */
+  --logo-sage: #81C784; 
+  --logo-sun: #FCE34E;
+  --asphalt: #34495E;
   --white: #FFFFFF;
-  --light-bg: #f7faf7;     /* Soft green-tinted white for backgrounds */
+  --light-bg: #f7faf7;
 }
 
-/* ---------- 3. GENERAL STYLES ---------- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.5;
+}
 body {
   font-family: 'Poppins', sans-serif;
   color: var(--asphalt);
-  line-height: 1.6;
   background-color: var(--white);
   overflow-x: hidden;
 }
 
-/* HEADINGS: Matching the hand-drawn logo style */
 h1, h2, h3, .logo-text {
   font-family: 'Cabin Sketch', cursive;
-  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-/* ---------- 4. NAVIGATION ---------- */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 8%;
-  background: var(--white);
+/* ==========================================
+   2. NAVIGATION
+   ========================================== */
+nav {
+  background: #ffffff;
+  padding: 10px 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  width: 100%;
+  z-index: 9999;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo-container {
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  padding: 0 5%;
 }
 
-/* Fix: Circular mask hides the square green background of the logo */
 .nav-logo {
-  height: 70px;
-  width: 70px;
+  height: 65px;
+  width: 65px;
   border-radius: 50%; 
   object-fit: cover;
-  
 }
 
 .logo-text {
   font-size: 1.5rem;
   color: var(--logo-sage);
+  margin-left: 10px;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
   gap: 25px;
+  align-items: center;
 }
 
 .nav-links a {
   text-decoration: none;
   color: var(--asphalt);
   font-weight: 600;
-  font-size: 0.9rem;
   transition: 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links a.active, .nav-links a:hover {
   color: var(--logo-sage);
 }
 
-.btn-appointment {
-  background: var(--logo-sun);
+/* --- HAMBURGER UI --- */
+#nav-check { display: none; }
+
+.nav-btn {
+  display: none; 
+  cursor: pointer;
+  font-size: 28px;
   color: var(--asphalt);
-  padding: 10px 22px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  transition: 0.3s;
 }
 
-.btn-appointment:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+@media (max-width: 950px) {
+  .nav-btn { display: block; }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    display: block;
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    text-align: center;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+  }
+
+  .nav-links li {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  #nav-check:checked ~ .nav-links {
+    max-height: 500px; /* Slides down naturally */
+  }
 }
 
-/* ---------- 5. COMPACT HERO SECTION ---------- */
-
+/* ==========================================
+   3. HERO SECTION (YOUR STYLES KEPT)
+   ========================================== */
 .hero {
   min-height: 60vh; 
   padding: 40px 20px;
-  /* Fixed the slash from \ to / */background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/images/learning-outside.jpg');
-
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/images/learning-outside.jpg');
   background-size: cover;
   background-position: center;
   display: flex; 
@@ -115,364 +133,201 @@ h1, h2, h3, .logo-text {
   justify-content: center;
 }
 
-.hero-overlay {
-  /* 129, 199, 132 is the RGB version of your Sage Green */
-  /* 0.85 is the opacity. Change to 0.7 for MORE transparency, or 0.9 for LESS */
-  background: rgba(129, 199, 132, 0.); 
-  
-  padding: 15px 40px 35px 40px; 
-  border-radius: 35px;
-  max-width: 650px;
-  width: 100%;
-  color: white;
-  text-align: center;
-  
-  /* This creates a trendy "frosted glass" effect on the photo behind it */
-  backdrop-filter: blur(1px); 
-  -webkit-backdrop-filter: blur(1px); /* For Safari support */
-  
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-}
-
 .hero-brand-icon { 
-  height: 300px; 
-  
+ height: 300px;
   border-radius: 50%;
   object-fit: cover;
-  /* Reduced bottom margin from 15px to 5px to close the gap with h3 */
-  margin-bottom: 5px; 
+  margin-bottom: 15px;
+  display: block;     /* Ensures it takes up its own space */
+  margin-left: auto;  /* Centers it inside the overlay */
+  margin-right: auto;
+  
 }
-
-
-
-.hero-overlay h1 { 
-  font-size: clamp(2.2rem, 5vw, 3.2rem); 
-  /* Sketch fonts often have built-in padding; setting margin-top to 0 helps */
-  margin-top: 0;
-  margin-bottom: 15px; 
-  line-height: 1.1;
-}
-
-/* HERO BUTTONS */
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.btn-enroll {
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  display: inline-block;
+.hero-overlay {
+  /* 1. Semi-transparent background (0.85 opacity) */
+  background: rgba(129, 199, 132, 0.15) !important; 
+  
+  /* 2. The "Frosted" Blur Effect */
+  backdrop-filter: blur(2px) !important; 
+  -webkit-backdrop-filter: blur(2px) !important; /* This is the "Safari Fix" */
+  
+  /* 3. Styling */
+  padding: 35px 40px; 
+  border-radius: 35px;
+  max-width: 650px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Adds a subtle "glass" edge */
 }
 
 .btn-enroll {
   background: var(--asphalt);
   color: white;
-}
-
-.btn-learn {
-  border: 2px solid white;
-  color: white;
-}
-
-.btn-enroll:hover, .btn-learn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.btn-learn:hover {
-  background: white;
-  color: var(--logo-sage);
-}
-
-/* ---------- 6. DYNAMIC FEATURES SECTION ---------- */
-.features-section {
-  padding: 80px 10%;
-  background-color: var(--light-bg);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  text-align: center;
-}
-
-.feature-card i {
-  font-size: 2.2rem;
-  color: var(--logo-sage); 
-  background: rgba(129, 199, 132, 0.1); /* Soft Sage circle */
-  width: 80px;
-  height: 80px;
-  line-height: 80px; 
-  border-radius: 50%;
-  margin-bottom: 20px;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
   display: inline-block;
-  transition: all 0.3s ease;
+  margin-top: 20px;
 }
 
-.feature-card:hover i {
-  color: var(--logo-sun); /* Turns Sun Yellow on hover */
-  background: rgba(252, 227, 78, 0.2); 
-  transform: scale(1.1);
-}
-
-.icon-circle {
-  width: 85px; 
-  height: 85px; 
-  border-radius: 50%;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  margin: 0 auto 25px; 
-  font-size: 2rem; 
-  color: white;
-  transition: 0.4s ease;
-}
-
-.feature-item:hover .icon-circle { 
-  transform: scale(1.15) rotate(12deg); 
-}
-
-.feature-item h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: var(--logo-sage);
-}
-
-.feature-item p {
-  font-size: 0.95rem;
-  color: #666;
-}
-
-/* Circle Palette Mapping */
-.bg-sage { background: var(--logo-sage); }
-.bg-sun { background: var(--logo-sun); color: var(--asphalt) !important; }
-
-
-/* ---------- DYNAMIC STORY SECTION ---------- */
+/* ==========================================
+   4. CLASSES & STORY SECTIONS
+   ========================================== */
 .story-section {
-  padding: 100px 5%; /* Large vertical breathing room */
-  background: linear-gradient(to bottom, #f9fbf9, #ffffff);
-  display: flex;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  padding: 80px 5%;
+  background: var(--light-bg);
 }
 
 .story-container {
   max-width: 900px;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.story-content {
-  background: #ffffff;
-  padding: 60px 50px;
+  margin: 0 auto;
+  background: white;
+  padding: 60px 40px;
   border-radius: 50px;
   text-align: center;
-  /* Softest possible shadow for "Floating" elegance */
-  box-shadow: 0 20px 60px rgba(129, 199, 132, 0.08);
-  border: 1px solid rgba(129, 199, 132, 0.1);
+  position: relative !important; /* This is the "anchor" the leaf needs */
+  overflow: visible !important; /* This prevents the leaf from being cut off at the top */
 }
 
-.story-badge {
-  display: inline-block;
-  padding: 8px 24px;
-  background: rgba(252, 227, 78, 0.15); /* Sun Yellow tint */
-  color: #a38b00;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
-}
-
-.story-content h2 {
-  font-family: 'Cabin Sketch', cursive;
-  color: var(--logo-sage);
-  font-size: clamp(2rem, 5vw, 2.8rem); /* Syncs size with Hero/Cards */
-  margin-bottom: 30px;
-  line-height: 1.2;
-}
-
-.story-text p {
-  font-family: 'Poppins', sans-serif; /* Clean, modern font */
-  font-size: 1.1rem; /* Standardizing with feature cards */
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.story-text strong {
-  color: var(--asphalt);
-  font-weight: 600;
-}
-
-/* Decorative Leaf Icon */
 .story-leaf {
   position: absolute;
-  top: -20px;
+  top: -30px; 
   left: 50%;
   transform: translateX(-50%);
-  background: var(--logo-sage);
-  color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  background: var(--logo-sage) !important;
+  color: white !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.5rem !important;
+  box-shadow: 0 4px 15px rgba(129, 199, 132, 0.4) !important;
+  z-index: 5;
+}
+
+
+/* ---------- 4. CLASSES & FEATURES GRID ---------- */
+.features-grid {
+  display: grid;
+  /* This 'auto-fit' was likely what was causing the 3-and-1 look. 
+     We are replacing it with a controlled structure. */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 30px;
+  padding: 60px 8%;
+  align-items: stretch;
+}
+
+/* TABLET: 2 columns (2 and 2) */
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE: 1 column (Stacked) */
+@media (max-width: 650px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    padding: 40px 10%;
+    gap: 20px;
+  }
+}
+
+.feature-card {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  box-shadow: 0 5px 15px rgba(129, 199, 132, 0.4);
-}
-
-/* Responsive spacing for mobile */
-@media (max-width: 768px) {
-  .story-section { padding: 60px 20px; }
-  .story-content { padding: 40px 25px; }
-}
-/* ---------- 7. FOOTER ---------- */
-footer {
-  position: relative;
-  background-color: var(--asphalt); /* #333 or your dark grey */
-  color: white;
-  padding: 80px 20px 40px 20px;
+  flex-direction: column;
+  align-items: center; /* Centers the icons/tags */
   text-align: center;
-  overflow: hidden; /* This clips the artwork so it doesn't spill out */
+  padding: 40px 30px;
+  background: white;
+  border-radius: 35px;
+  height: 100%;
 }
 
-/* Base style for the artwork (Pseudo-elements) */
-footer::before,
-footer::after {
+/* This targets the icon inside your Feature Cards */
+.feature-card i {
+  font-size: 2.5rem !important; 
+  color: var(--logo-sage) !important;
+  background: rgba(129, 199, 132, 0.1) !important; /* Soft green circle */
+  width: 90px !important;
+  height: 90px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  margin: 0 auto 20px auto !important; /* Centers the circle */
+  transition: all 0.3s ease !important;
+}
+
+/* Hover effect: Turns yellow and pops up */
+.feature-card:hover i {
+  background: var(--logo-sun) !important;
+  color: var(--asphalt) !important;
+  transform: translateY(-5px) scale(1.1) !important;
+}
+
+.launch-tag {
+  background: var(--logo-sun);
+  color: var(--asphalt);
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* ==========================================
+   5. FOOTER (ARTWORK KEPT)
+   ========================================== */
+footer {
+  background-color: var(--asphalt);
+  color: white;
+  padding: 80px 20px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before, footer::after {
   content: "";
   position: absolute;
-  width: 450px;
-  height: 450px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.1; /* Very subtle artistic look */
+  width: 400px; height: 400px;
+  opacity: 0.1;
   pointer-events: none;
-  z-index: 0;
 }
 
-/* Left side: Large Sage Leaf Artwork */
 footer::before {
-  bottom: -100px;
-  left: -120px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%2381c784' d='M30,90 Q50,50 90,30 Q70,70 30,90 Z M10,70 Q40,40 70,10 Q50,50 10,70 Z'/%3E%3C/svg%3E");
-  transform: rotate(-10deg);
+  bottom: -100px; left: -120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%2381c784' d='M30,90 Q50,50 90,30 Q70,70 30,90 Z'/%3E%3C/svg%3E");
 }
 
-/* Right side: Large Sun Yellow Branch Artwork */
 footer::after {
-  top: -100px;
-  right: -120px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23fce34e' d='M10,10 Q50,20 80,60 Q40,50 10,10 Z M40,80 Q70,70 90,20 Q80,50 40,80 Z'/%3E%3C/svg%3E");
-  transform: rotate(170deg);
+  top: -100px; right: -120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23fce34e' d='M10,10 Q50,20 80,60 Q40,50 10,10 Z'/%3E%3C/svg%3E");
 }
 
-/* Ensure your content stays on top of the art */
-.footer-logo, 
-.footer-socials, 
-footer p {
-  position: relative;
-  z-index: 1;
-}
+.footer-socials a { color: white; font-size: 1.8rem; margin: 0 15px; }
 
 .footer-logo {
-  max-width: 180px;
-  margin-bottom: 30px;
-}
-
-.footer-socials {
-  margin-bottom: 25px;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .footer-socials a {
-  color: white;
-  font-size: 1.5rem;
-  margin: 0 15px;
-  transition: color 0.3s ease;
+  color: white !important;
+  font-size: 1.8rem !important;
+  margin: 0 15px !important;
+  transition: 0.3s ease !important;
+  text-decoration: none !important;
 }
 
 .footer-socials a:hover {
-  color: var(--logo-sun); /* Highlight yellow on hover */
-}
-
-footer p {
-  font-size: 0.9rem;
-  opacity: 0.7;
-  letter-spacing: 1px;
-}
-
-
-/* ---------- 8. RESPONSIVE DESIGN & HAMBURGER ---------- */
-
-/* Hide the checkbox and button by default on desktop */
-#check { display: none; }
-.checkbtn {
-  font-size: 30px;
-  color: var(--asphalt);
-  cursor: pointer;
-  display: none; /* Hidden on desktop */
-}
-
-
-
-@media (max-width: 950px) {
-  .checkbtn { display: block; } /* Show hamburger on mobile */
-  
-  .desktop-only { display: none; } /* Hide the big button */
-
-  .nav-links {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: var(--logo-sage);
-    top: 90px; /* Adjust based on your navbar height */
-    left: -100%; /* Hidden off-screen to the left */
-    text-align: center;
-    transition: all .5s;
-    flex-direction: column;
-    padding-top: 50px;
-    z-index: 999;
-  }
-.nav-links a {
-    font-size: 20px;
-    color: white; /* Default color in the green menu */
-    font-family: 'Cabin Sketch', cursive;
-    transition: 0.3s ease; /* Smooth color change */
-    display: inline-block;
-  }
-  .nav-links a:hover {
-    color: var(--logo-sun); /* Your Sun Yellow #FCE34E */
-    transform: scale(1.1);   /* Makes the text grow slightly */
-    letter-spacing: 4px;    /* Spreads the letters for that "sketchy" feel */
-  }
-  .nav-links li {
-    display: block;
-    margin: 25px 0;
-    line-height: 30px;
-  }
-
-  .nav-links a {
-    font-size: 20px;
-    color: white;
-    font-family: 'Cabin Sketch', cursive; /* Keeping the logo vibe */
-  }
-
-  /* When the hidden checkbox is checked, slide the menu in */
-  #check:checked ~ .nav-links {
-    left: 0;
-  }
-  
+  color: var(--logo-sun) !important;
+  transform: scale(1.2);
 }
